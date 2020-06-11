@@ -6,6 +6,8 @@
 @import url('./__add/profile__add.css');
 
 .profile {
+  padding: 40px 0 0;
+  box-sizing: border-box;
   display: grid;
   grid-template-columns: 120px 1fr 150px;
   column-gap: 30px;

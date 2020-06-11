@@ -1,4 +1,6 @@
 .profile__name-container {
   grid-column: 2/3 ;
   align-self: end;
+  display: flex;
+  align-items: baseline;
 }
