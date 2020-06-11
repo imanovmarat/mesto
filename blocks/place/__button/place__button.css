@@ -1,0 +1,9 @@
+.place__button {
+  min-width: 29px;
+  height: 29px;
+  padding: 5px 4px;
+  background: url('../../../images/like.svg') center/21px 19px no-repeat;
+  border: none;
+  cursor: pointer;
+  box-sizing: border-box;
+}
