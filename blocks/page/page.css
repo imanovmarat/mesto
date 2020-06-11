@@ -1,0 +1,14 @@
+* {
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: red;
+}
+
+.page {
+  background-color: #000;
+  max-width: 882px;
+  color: #fff;
+  font-weight: 400;
+  margin: 0 auto;
+  padding: 0 19px;
+}
