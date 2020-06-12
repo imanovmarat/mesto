@@ -10,5 +10,21 @@
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 120px 1fr 150px;
+  grid-template-areas:
+  'image name add'
+  'image position add';
   column-gap: 30px;
+}
+
+@media screen and (max-width: 720px) {
+  .profile {
+    padding: 42px 0 0;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    'image'
+    'name'
+    'position'
+    'add';
+    justify-items: center;
+  }
 }

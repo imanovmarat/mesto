@@ -8,3 +8,14 @@
   cursor: pointer;
 }
 
+.profile__name-edit:hover {
+  opacity: 0.6;
+  transition: opacity 0.3s ease-out;
+}
+
+@media screen and (max-width: 440px) {
+  .profile__name-edit {
+    min-width: 18px;
+    height: 18px;
+  }
+}

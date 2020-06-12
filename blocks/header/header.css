@@ -13,3 +13,15 @@
   display: block;
   border-bottom: 1px solid #545454;;
 }
+
+@media screen and (max-width: 440px) {
+  .header {
+    box-sizing: border-box;
+    padding: 28px 0 0;
+  }
+
+  .header::after {
+    padding-top: 31px;
+    margin: 0 -19px;
+  }
+}

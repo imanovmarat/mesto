@@ -1,5 +1,5 @@
 .profile__add {
-  grid-row: 1/3;
+  grid-area: add;
   max-width: 100%;
   width: 100%;
   min-height: 50px;
@@ -11,4 +11,20 @@
   padding: 0;
   cursor: pointer;
   align-self: center;
+}
+
+.profile__add:hover {
+  opacity: 0.6;
+  transition: opacity 0.3s ease-out;
+}
+
+@media screen and (min-width: 440px) and (max-width: 720px){
+  .profile__add {
+    max-width: 150px;
+  }
+}
+@media screen and (max-width: 440px) {
+  .profile__add {
+    background-size: 16px 16px;
+  }
 }

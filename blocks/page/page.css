@@ -1,12 +1,14 @@
-* {
+/* * {
   outline-width: 1px;
   outline-style: solid;
   outline-color: red;
-}
+} */
 
 .page {
+  box-sizing: border-box;
   background-color: #000;
-  max-width: 882px;
+  min-width: 320px;
+  max-width: 920px;
   color: #fff;
   font-weight: 400;
   margin: 0 auto;
