@@ -1,0 +1,8 @@
+.popup__edit-position {
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #000;
+  border-color: rgba(0, 0, 0, .2);
+  margin: 0 0 48px;
+}

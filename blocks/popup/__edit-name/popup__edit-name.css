@@ -1,0 +1,11 @@
+.popup__edit-name {
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #000;
+  border-color: rgba(0, 0, 0, .2);
+  margin: 0 0 36px;
+  font-size: 14px;
+  line-height: 30px;
+  outline: none;
+}
