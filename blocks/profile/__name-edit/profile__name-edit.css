@@ -6,6 +6,7 @@
   background: url('../../../images/pensil.png') center no-repeat ;
   padding: 0;
   cursor: pointer;
+  outline: none;
 }
 
 .profile__name-edit:hover {

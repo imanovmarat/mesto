@@ -9,24 +9,3 @@
   position: relative;
   margin: 0 18px;
 }
-
-.popup__container::before {
-  content: '';
-  position: absolute;
-  max-width: 41px;
-  width: 100%;
-  min-height: 41px;
-  top: -38px;
-  right: -38px;
-  background: url('../../../images/close-icon.svg') center;
-}
-
-@media screen and (max-width: 720px) {
-  .popup__container::before {
-    max-width: 29px;
-    min-height: 29px;
-    top: 5px;
-    right: 5px;
-    background: url('../../../images/close-icon-black.svg') center/cover;
-  }
-}
