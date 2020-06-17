@@ -9,6 +9,7 @@
   border: none;
   box-shadow: none;
   outline: none;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 720px) {
@@ -19,4 +20,9 @@
     right: 5px;
     background: url('../../../images/close-icon-black.svg') center/cover;
   }
+}
+
+.popup__close-btn:hover {
+  opacity: .8;
+  transition: opacity .3s ease-out;
 }

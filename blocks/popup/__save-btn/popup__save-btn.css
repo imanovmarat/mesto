@@ -9,4 +9,10 @@
   box-shadow: none;
   border: none;
   outline: none;
+  cursor: pointer;
+}
+
+.popup__save-btn:hover {
+  opacity: .8;
+  transition: opacity .3s ease-out;
 }
