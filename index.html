@@ -20,10 +20,10 @@
       <img src="./images/Jacques-Yves-Cousteau.jpg" alt="Фотография Жак-Ив Кусто" class="profile__image">
       <div class="profile__name-container">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
-        <button class="profile__name-edit"></button>
+        <button class="profile__name-edit" type="button"></button>
       </div>
       <p class="profile__position">Исследователь океана</p>
-      <button class="profile__add"></button>
+      <button class="profile__add" type="button"></button>
     </section>
 
     <section class="places">
@@ -31,42 +31,42 @@
         <img class="place__image" src="./images/Luxembourg-Square.jpeg" alt="Фотография Люксембургской площади">
         <figcaption class="place__container">
           <h2 class="place__title">Люксембургская площадь</h2>
-          <button class="place__button"></button>
+          <button class="place__button" type="button"></button>
         </figcaption>
       </figure>
       <figure class="place">
         <img class="place__image" src="./images/Vernazza.jpeg" alt="Фотография Вернацца">
         <figcaption class="place__container">
           <h2 class="place__title">Вернацца</h2>
-          <button class="place__button"></button>
+          <button class="place__button" type="button"></button>
         </figcaption>
       </figure>
       <figure class="place">
         <img class="place__image" src="./images/fiolent.jpeg" alt="Мыс Фиолент">
         <figcaption class="place__container">
           <h2 class="place__title">Мыс Фиолент</h2>
-          <button class="place__button"></button>
+          <button class="place__button" type="button"></button>
         </figcaption>
       </figure>
       <figure class="place">
         <img class="place__image" src="./images/Lagoa-Comprida.jpeg" alt="Фотография озера Лагоа Комприда">
         <figcaption class="place__container">
           <h2 class="place__title">Лагоа Комприда</h2>
-          <button class="place__button"></button>
+          <button class="place__button" type="button"></button>
         </figcaption>
       </figure>
       <figure class="place">
         <img class="place__image" src="./images/Munnar-Tea-Garden.jpeg" alt="Чайные плантации Муннара">
         <figcaption class="place__container">
           <h2 class="place__title">Муннар</h2>
-          <button class="place__button"></button>
+          <button class="place__button" type="button"></button>
         </figcaption>
       </figure>
       <figure class="place">
         <img class="place__image" src="./images/Moraine-Lake.jpeg" alt="Фотография озера Морейн">
         <figcaption class="place__container">
           <h2 class="place__title">Морейн</h2>
-          <button class="place__button"></button>
+          <button class="place__button" type="button"></button>
         </figcaption>
       </figure>
     </section>
@@ -78,12 +78,12 @@
     </p>
   </footer>
   <section class="popup">
-    <form action="" class="popup__container">
+    <form action="./scripts/index.js" class="popup__container" name="editor">
       <button class="popup__close-btn" type="button"></button>
       <fieldset class="popup__box">
         <legend class="popup__heading">Редактировать профиль</legend>
-        <input class="popup__input popup__input_field_name" type="text">
-        <input class="popup__input popup__field_field_position" type="text">
+        <input class="popup__input popup__input_field_name" type="text" name="name">
+        <input class="popup__input popup__field_field_position" type="text" name="position">
         <button class="popup__save-btn">Сохранить</button>
       </fieldset>
     </form>
