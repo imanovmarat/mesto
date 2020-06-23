@@ -1,3 +1,41 @@
+const initialCards = [
+  {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+      name: 'Холмогорский район',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+
+const places = document.querySelector('.places'),
+      placeTemplate = document.querySelector('#place').content;
+
+initialCards.forEach(function (placeobj) {
+  const placeElement = placeTemplate.cloneNode(true);
+  placeElement.querySelector('.place__image').src = placeobj.link;
+  placeElement.querySelector('.place__image').alt = placeobj.name;
+  placeElement.querySelector('.place__title').textContent = placeobj.name;
+  places.append(placeElement);
+});
+
 let popup = document.querySelector ('.popup'),
     nameEditBtn = document.querySelector('.profile__name-edit'),
     popupCloseBtn = popup.querySelector('.popup__close-btn'),
