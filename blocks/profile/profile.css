@@ -1,9 +1,10 @@
 @import url('./__image/profile__image.css');
 @import url('./__name-container/profile__name-container.css');
 @import url('./__name/profile__name.css');
-@import url('./__name-edit/profile__name-edit.css');
+@import url('./__button/profile__button.css');
+@import url('./__button/_type/profile__button_type_edit.css');
+@import url('./__button/_type/profile__button_type_add.css');
 @import url('./__position/profile__position.css');
-@import url('./__add/profile__add.css');
 
 .profile {
   padding: 40px 0 0;

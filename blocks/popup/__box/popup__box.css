@@ -1,4 +1,5 @@
 .popup__box {
   border: none;
   padding: 0;
+  min-inline-size: auto;
 }
