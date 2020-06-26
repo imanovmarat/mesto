@@ -25,7 +25,6 @@ const initialCards = [
   }
 ];
 
-
 initialCards.reverse().forEach((item) => {
   let titleNewCard = item.name,
       imageNewCard = item.link;
@@ -54,30 +53,30 @@ function renderCard(title, image) {
   });
 
   cardImg.addEventListener('click', (evt) => {
-    FullImgPopup (evt.target);
+    fullImgPopup (evt.target);
   });
 
   cardsContainer.prepend(cardElement);
 }
 
-function FullImgPopup (picture){
+function fullImgPopup (picture){
   const popupTemplate = document.querySelector('.popup_type_full-img'),
         closeBtn = popupTemplate.querySelector('.popup__button_type_close'),
         img = popupTemplate.querySelector('.popup__image'),
         imgTitle = popupTemplate.querySelector('.popup__image-caption');
 
-  const CardTitle = picture.parentElement.querySelector('.place__title');
+  const cardTitle = picture.parentElement.querySelector('.place__title');
 
   img.src = picture.src;
   img.alt = picture.alt;
-  imgTitle.textContent = CardTitle.textContent;
+  imgTitle.textContent = cardTitle.textContent;
 
-  function ToggleFullImgPopup (){
+  function toggleFullImgPopup (){
     popupToggle(popupTemplate);
-    closeBtn.removeEventListener('click', ToggleFullImgPopup);
+    closeBtn.removeEventListener('click', toggleFullImgPopup);
   }
 
-  closeBtn.addEventListener('click', ToggleFullImgPopup);
+  closeBtn.addEventListener('click', toggleFullImgPopup);
 
 popupToggle(popupTemplate);
 }
@@ -85,7 +84,6 @@ popupToggle(popupTemplate);
 function popupToggle(popup) {
   popup.classList.toggle('popup_opened');
 }
-
 
 let popup = document.querySelector ('.popup_type_edit-profile'),
     nameEditBtn = document.querySelector('.profile__button_type_edit'),
@@ -117,15 +115,12 @@ function formSubmitHandler (evt) {
 
 formElement.addEventListener('submit', formSubmitHandler);
 
-
-
 const addCardBtn = document.querySelector('.profile__button_type_add'),
       popupAddCard = document.querySelector('.popup_type_add-card'),
       createCard = popupAddCard.querySelector('.popup__button_type_submit'),
       cardCloseBtn = popupAddCard.querySelector('.popup__button_type_close'),
       inputCardName = popupAddCard.querySelector('.popup__input_field_first'),
       inputCardImgLink = popupAddCard.querySelector('.popup__input_field_second');
-
 
 addCardBtn.addEventListener('click', function() {
   popupToggle(popupAddCard);
