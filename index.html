@@ -40,8 +40,8 @@
       <button class="popup__button popup__button_type_close" type="button"></button>
       <fieldset class="popup__box">
         <legend class="popup__heading">Редактировать профиль</legend>
-        <input class="popup__input popup__input_field_first" type="text" name="name">
-        <input class="popup__input popup__input_field_second" type="text" name="position">
+        <input class="popup__input popup__input_field_first" type="text" name="name" required>
+        <input class="popup__input popup__input_field_second" type="text" name="position" required>
         <button class="popup__button popup__button_type_submit">Сохранить</button>
       </fieldset>
     </form>
@@ -52,9 +52,9 @@
       <button class="popup__button popup__button_type_close" type="button"></button>
       <fieldset class="popup__box">
         <legend class="popup__heading">Новое место</legend>
-        <input class="popup__input popup__input_field_first" type="text" name="card-name" placeholder="Название">
-        <input class="popup__input popup__input_field_second" type="text" name="card-image" placeholder="Ссылка на картинку">
-        <button class="popup__button popup__button_type_submit">Создать</button>
+        <input class="popup__input popup__input_field_first" type="text" name="card-name" required placeholder="Название" >
+        <input class="popup__input popup__input_field_second" type="text" name="card-image" required placeholder="Ссылка на картинку">
+        <button class="popup__button popup__button_type_submit" type="submit">Создать</button>
       </fieldset>
     </form>
   </section>
