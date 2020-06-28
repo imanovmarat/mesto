@@ -103,7 +103,7 @@ formElement.addEventListener('submit', formSubmitHandler);
 
 const addCardBtn = document.querySelector('.profile__button_type_add'),
       popupAddCard = document.querySelector('.popup_type_add-card'),
-      createCard = popupAddCard.querySelector('.popup__button_type_submit'),
+      createCard = popupAddCard.querySelector('.popup__container_size_small'),
       cardCloseBtn = popupAddCard.querySelector('.popup__button_type_close'),
       inputCardName = popupAddCard.querySelector('.popup__input_field_first'),
       inputCardImgLink = popupAddCard.querySelector('.popup__input_field_second');
@@ -116,7 +116,7 @@ cardCloseBtn.addEventListener('click', function() {
   popupToggle(popupAddCard);
 });
 
-createCard.addEventListener('click', (evt) => {
+createCard.addEventListener('submit', (evt) => {
   evt.preventDefault();
   const titleNewCard = inputCardName.value,
         imageNewCard = inputCardImgLink.value;
