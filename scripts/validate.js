@@ -69,8 +69,8 @@ function hasInvalidInput(inputList){
   })
 }
 
-function toggleButtonState(inputList, buttonElement, config) {
-  const inactiveButtonClass = config.inactiveButtonClass;
+function toggleButtonState(inputList, buttonElement, config= 'popup__button_inactive') {
+  const inactiveButtonClass = config.inactiveButtonClass || config;
 
   if(hasInvalidInput(inputList)){
     buttonElement.classList.add(inactiveButtonClass);

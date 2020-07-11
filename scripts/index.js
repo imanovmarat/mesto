@@ -38,19 +38,27 @@ function renderCard(title, image) {
 
 // Открытие и закрытие всех попапов
 
-/*
-const popupOverlay = document.querySelector('.popup');
-popupOverlay.addEventListener('click', (evt)=>{
-  if(evt.target !== evt.currentTarget) {
-    return;
-  }
-  popupToggle(popupOverlay);
-})
-*/
-
 function popupToggle (popup){
   popup.classList.toggle('popup_opened');
-};
+}
+
+function clsPopupOverlay(evt) {
+  const popupOverlay = evt.currentTarget.closest('.popup');
+
+  if(evt.target === evt.currentTarget || evt.key === 'esc'){
+    popupToggle(popupOverlay);
+  }
+}
+
+//Закрываем попап при нажатии на escape
+
+document.addEventListener('keydown', (evt) => {
+  const openedPopup = document.querySelector('.popup_opened');
+  if (openedPopup && evt.key === 'Escape') {
+    popupToggle(openedPopup);
+  }
+});
+
 
 // Попапчик с полной картинкой
 
@@ -71,13 +79,7 @@ function fullImgPopup (picture){
     closeBtn.removeEventListener('click', toggleFullImgPopup);
   }
 
-  popupTemplate.addEventListener('click', (evt) => {
-    if (evt.target !==evt.currentTarget) {
-      return
-    }
-    popupToggle(popupTemplate);
-  })
-
+  popupTemplate.addEventListener('click', clsPopupOverlay);
   closeBtn.addEventListener('click', toggleFullImgPopup);
 
 popupToggle(popupTemplate);
@@ -98,13 +100,16 @@ nameInput.value = name.textContent;
 jobInput.value = position.textContent;
 // }
 
-nameEditBtn.addEventListener('click', function() {
+nameEditBtn.addEventListener('click', () => {
   popupToggle(popup);
 });
 
-popupCloseBtn.addEventListener('click', function() {
+popupCloseBtn.addEventListener('click',() => {
   popupToggle(popup);
 });
+
+popup.addEventListener('click', clsPopupOverlay);
+
 const formElement = popup.querySelector('.popup__container');
 
 function formSubmitHandler (evt) {
@@ -120,7 +125,9 @@ formElement.addEventListener('submit', formSubmitHandler);
 
 const addCardBtn = document.querySelector('.profile__button_type_add'),
       popupAddCard = document.querySelector('.popup_type_add-card'),
-      createCard = popupAddCard.querySelector('.popup__container_size_small'),
+      formAddCard = document.forms['add-card'],
+      submitBtn = formAddCard.querySelector('.popup__button_type_submit'),
+      inputList = Array.from(formAddCard.querySelectorAll('.popup__input')),
       cardCloseBtn = popupAddCard.querySelector('.popup__button_type_close'),
       inputCardName = popupAddCard.querySelector('.popup__input_field_first'),
       inputCardImgLink = popupAddCard.querySelector('.popup__input_field_second');
@@ -129,16 +136,20 @@ addCardBtn.addEventListener('click', function() {
   popupToggle(popupAddCard);
 });
 
+popupAddCard.addEventListener('click', clsPopupOverlay);
+
 cardCloseBtn.addEventListener('click', function() {
   popupToggle(popupAddCard);
 });
 
-createCard.addEventListener('submit', (evt) => {
+formAddCard.addEventListener('submit', (evt) => {
   evt.preventDefault();
   const titleNewCard = inputCardName.value,
         imageNewCard = inputCardImgLink.value;
   renderCard(titleNewCard, imageNewCard);
   inputCardName.value = '';
   inputCardImgLink.value = '';
+  console.log(inputList);
+  toggleButtonState(inputList, submitBtn);
   popupToggle(popupAddCard);
 });
