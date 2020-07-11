@@ -95,10 +95,8 @@ const popup = document.querySelector ('.popup_type_edit-profile'),
       nameInput =  popup.querySelector('.popup__input_field_first'),
       jobInput = popup.querySelector('.popup__input_field_second');
 
-// if (!popup.classList.contains('popup_opened')) {
 nameInput.value = name.textContent;
 jobInput.value = position.textContent;
-// }
 
 nameEditBtn.addEventListener('click', () => {
   popupToggle(popup);
