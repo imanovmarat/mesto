@@ -51,15 +51,6 @@ const enableValidation = (config) => {
   });
 };
 
-enableValidation({
-  formSelector: '.popup__container_size_small',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button_type_submit',
-  inactiveButtonClass: 'popup__button_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_visible'
-});
-
 function hasInvalidInput(inputList){
   return inputList.some((inputElement) => {
     return !inputElement.validity.valid;
