@@ -5,6 +5,7 @@
   box-sizing: border-box;
   background: url('../../../../images/pensil.png') center no-repeat ;
   padding: 0;
+  display: inline-flex;
 }
 
 .profile__button_type_edit:hover {

@@ -72,21 +72,9 @@ const currentPersonData = () => {
   inputPosition.value = profilePosition.textContent;
 };
 
-const resetInput = (popup) => {
-  const inputList = Array.from(popup.querySelectorAll(config.inputSelector));
-  inputList.forEach((input) => input.value = '');
-};
-
 const removeInputError = (popup) => {
   const inputList = Array.from(popup.querySelectorAll(config.inputSelector));
   inputList.forEach(input => hideInputError(popup, input, config));
-};
-
-//  Вывод на экран карточки
-
-const renderCard = (cardData) => {
-  const card = createCard(cardData);
-  cards.prepend(card);
 };
 
 // Попапчик с полной картинкой
@@ -138,6 +126,20 @@ const createCard = (cardData) => {
   return card;
 };
 
+//  Вывод на экран карточки
+
+const renderCard = (cardData) => {
+  const card = createCard(cardData);
+  cards.prepend(card);
+};
+
+// Перебор начального массива
+const scrollThrough = (array) => {
+  array.reverse().forEach((cardData) => {
+    renderCard(cardData);
+  });
+};
+
 //Устанавливаем слушатели на попапы
 
 const setPopupListeners = (popup) => {
@@ -164,7 +166,8 @@ editNameButton.addEventListener('click', () => {
 });
 
 addCardButton.addEventListener('click', () => {
-  resetInput(addCardPopup);
+  const form = addCardPopup.querySelector(config.formSelector);
+  form.reset();
   removeInputError(addCardPopup);
   checkButtonState(addCardPopup);
   openPopup(addCardPopup);
@@ -188,17 +191,13 @@ addCardPopup.addEventListener('submit', (evt) => {
   closePopup(addCardPopup);
 })
 
-// Перебор начального массива
-
-initialCards.reverse().forEach((cardData) => {
-  renderCard(cardData);
-});
-
 //Установка слушателей на попапы
 
 popups.forEach(popup => {
   setPopupListeners(popup);
 });
+// Вызов перебора начального массива
+scrollThrough(initialCards);
 
 // Вызов валидации
 enableValidation(config);

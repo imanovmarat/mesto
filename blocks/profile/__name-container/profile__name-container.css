@@ -1,6 +1,10 @@
 .profile__name-container {
   grid-area: name;
   align-self: end;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
   align-items: baseline;
 }
