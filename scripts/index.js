@@ -134,7 +134,7 @@ const renderCard = (cardData) => {
 };
 
 // Перебор начального массива
-const scrollThrough = (array) => {
+const renderInintialCards = (array) => {
   array.reverse().forEach((cardData) => {
     renderCard(cardData);
   });
@@ -197,7 +197,7 @@ popups.forEach(popup => {
   setPopupListeners(popup);
 });
 // Вызов перебора начального массива
-scrollThrough(initialCards);
+renderInintialCards(initialCards);
 
 // Вызов валидации
 enableValidation(config);
