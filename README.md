@@ -6,4 +6,4 @@
 [Это ссылка на проект](https://imanovmarat.github.io/mesto/index.html)
 
 ### Технологии
-HTML, CSS, Vanilla JS
+HTML, CSS, Vanilla JS (ООП, модули JS)

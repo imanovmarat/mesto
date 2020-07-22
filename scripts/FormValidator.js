@@ -1,18 +1,9 @@
-const config = {
-  formSelector: '.popup__container_size_small',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button_type_submit',
-  inactiveButtonClass: 'popup__button_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_visible'
-};
-
-const formList = Array.from(document.querySelectorAll(config.formSelector));
-
-class FormValidator {
+import {config} from './index.js';
+export default class FormValidator {
   constructor(formElement) {
     this._formElement = formElement;
     this._inputList = Array.from(this._formElement.querySelectorAll(config.inputSelector));
+    this._setEventListener();
   }
 
   _hasInvalidInput() {
@@ -68,12 +59,12 @@ class FormValidator {
     });
   }
 
-  enableValidation() {
-    this._setEventListener();
+  enableValidation(boolean) {
+    if (boolean === false){
+      this._inputList.forEach(inputElement => {
+        this._hideInputError(inputElement);
+      });
+      this._toggleButtonState();
+    }
   }
 }
-
-formList.forEach(formElement => {
-  const formValidator = new FormValidator(formElement);
-  formValidator.enableValidation();
-});

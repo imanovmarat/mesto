@@ -1,12 +1,18 @@
 'use strict'
+import {initialCards} from './utils.js';
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
+
 
 const cards = document.querySelector('.places');
-const cardTemplate = document.querySelector('#place').content;
+const cardSelector = '#place';
 
 const editNameButton = document.querySelector('.profile__button_type_edit');
 const addCardButton = document.querySelector('.profile__button_type_add');
 
 const popups = Array.from(document.querySelectorAll('.popup'));
+const forms = document.forms;
+console.log(forms);
 
 const editProfilePopup = document.querySelector('.popup_type_edit-profile');
 const profileName = document.querySelector('.profile__name');
@@ -30,6 +36,8 @@ const config = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_visible'
 };
+
+const formList = Array.from(document.querySelectorAll(config.formSelector));
 
 // Открытие и закрытие попапов
 
@@ -60,21 +68,13 @@ const closePopup = (popup) => {
 
 //Валидация форм в попапах
 
-const checkButtonState = (popup) => {
-  const inputList = Array.from(popup.querySelectorAll(config.inputSelector));
-  const buttonElement = popup.querySelector(config.submitButtonSelector);
+const addCardFormValidator = new FormValidator(forms['add-card']);
+const editProfileFormValidator = new FormValidator(forms['editor']);
 
-  toggleButtonState(inputList, buttonElement, config)
-};
 
 const currentPersonData = () => {
   inputName.value = profileName.textContent;
   inputPosition.value = profilePosition.textContent;
-};
-
-const removeInputError = (popup) => {
-  const inputList = Array.from(popup.querySelectorAll(config.inputSelector));
-  inputList.forEach(input => hideInputError(popup, input, config));
 };
 
 // Попапчик с полной картинкой
@@ -90,53 +90,20 @@ const openZoomPopup = (card) => {
   openPopup(zoomPopup);
 };
 
-//Устанавливаем слушателей на карточку
-
-const setListeners = (card) => {
-  const like = card.querySelector('.place__like');
-  const removeButton = card.querySelector('.place__remove');
-  const image = card.querySelector('.place__image');
-
-  like.addEventListener('click', evt => {
-    evt.target.classList.toggle('place__like_active');
-  })
-
-  removeButton.addEventListener('click', evt => {
-    evt.target.closest('.place').remove();
-  })
-
-  image.addEventListener('click', evt => {
-    const card = evt.target.closest('.place');
-    openZoomPopup(card);
-  })
-};
-
-// Создание карточки
-
-const createCard = (cardData) => {
-  const card = cardTemplate.cloneNode(true);
-  const image = card.querySelector('.place__image');
-  const title = card.querySelector('.place__title');
-
-  image.src = cardData.link;
-  image.alt = cardData.name;
-  title.textContent = cardData.name;
-
-  setListeners(card);
-  return card;
-};
-
 //  Вывод на экран карточки
 
-const renderCard = (cardData) => {
-  const card = createCard(cardData);
+const renderCard = (card) => {
   cards.prepend(card);
 };
 
 // Перебор начального массива
-const renderInintialCards = (array) => {
+
+const renderInitialCards = (array) => {
   array.reverse().forEach((cardData) => {
-    renderCard(cardData);
+    const card = new Card(cardData, cardSelector);
+    const cardElement = card.createCard();
+
+    renderCard(cardElement);
   });
 };
 
@@ -160,16 +127,14 @@ const setPopupListeners = (popup) => {
 
 editNameButton.addEventListener('click', () => {
   currentPersonData();
-  removeInputError(editProfilePopup);
-  checkButtonState(editProfilePopup);
+  editProfileFormValidator.enableValidation(false);
   openPopup(editProfilePopup);
 });
 
 addCardButton.addEventListener('click', () => {
   const form = addCardPopup.querySelector(config.formSelector);
   form.reset();
-  removeInputError(addCardPopup);
-  checkButtonState(addCardPopup);
+  addCardFormValidator.enableValidation(false);
   openPopup(addCardPopup);
 });
 
@@ -187,7 +152,8 @@ addCardPopup.addEventListener('submit', (evt) => {
   const cardData = {};
   cardData.name = inputTitle.value;
   cardData.link = inputLink.value;
-  renderCard(cardData);
+  const cardElement = new Card(cardData, cardSelector);
+  renderCard(cardElement.createCard());
   closePopup(addCardPopup);
 })
 
@@ -196,8 +162,11 @@ addCardPopup.addEventListener('submit', (evt) => {
 popups.forEach(popup => {
   setPopupListeners(popup);
 });
+
 // Вызов перебора начального массива
-renderInintialCards(initialCards);
+renderInitialCards(initialCards);
 
 // Вызов валидации
-enableValidation(config);
+// enableValidation(config);
+
+export {openZoomPopup, config};

@@ -1,4 +1,6 @@
-class Card {
+import {openZoomPopup} from './index.js';
+
+export default class Card {
   constructor(data, cardSelector) {
     this._imgLink = data.link;
     this._imgAltText = data.name;
@@ -34,10 +36,11 @@ class Card {
     const removeButton = this._element.querySelector('.place__remove');
     removeButton.addEventListener('click', evt => {
       evt.target.closest('.place').remove();
+      this._element = null;
     })
   }
 
-  renderCard() {
+  createCard() {
     this._getElement();
     const image = this._element.querySelector('.place__image');
     const title = this._element.querySelector('.place__title');
@@ -51,43 +54,3 @@ class Card {
     return this._element;
   }
 }
-
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
-const renderInintialCards = (array) => {
-  array.reverse().forEach((cardData) => {
-    const card = new Card(cardData, '#place');
-    const cardElement = card.renderCard();
-
-    document.querySelector('.places').append(cardElement);
-  });
-};
-
-renderInintialCards(initialCards);
-
-
