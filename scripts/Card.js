@@ -1,4 +1,4 @@
-import {openZoomPopup} from './index.js';
+import {openZoomPopup} from './utils.js';
 
 export default class Card {
   constructor(data, cardSelector) {
@@ -45,7 +45,7 @@ export default class Card {
     const image = this._element.querySelector('.place__image');
     const title = this._element.querySelector('.place__title');
     this._setLikeListener();
-    this._setImgListener()
+    this._setImgListener();
     this._setRemoveBtnListener();
     image.src = this._imgLink;
     image.alt = this._imgAltText;

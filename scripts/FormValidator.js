@@ -1,6 +1,7 @@
-import {config} from './index.js';
+import {config} from './utils.js';
+
 export default class FormValidator {
-  constructor(formElement) {
+  constructor(config, formElement) {
     this._formElement = formElement;
     this._inputList = Array.from(this._formElement.querySelectorAll(config.inputSelector));
     this._setEventListener();
@@ -17,10 +18,10 @@ export default class FormValidator {
 
     if (this._hasInvalidInput(this._inputList)) {
       this._submitButton.classList.add(config.inactiveButtonClass);
-      this._submitButton.setAttribute('disabled', true)
+      this._submitButton.setAttribute('disabled', true);
     } else {
       this._submitButton.classList.remove(config.inactiveButtonClass);
-      this._submitButton.removeAttribute('disabled')
+      this._submitButton.removeAttribute('disabled');
     }
   }
 

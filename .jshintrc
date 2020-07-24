@@ -9,7 +9,7 @@
 	"strict": false,
 	"browser": true,
 	"devel": true,
-	"jquery": true,
+	"jquery": false,
     "esversion": 9,
     "node": true
 }
