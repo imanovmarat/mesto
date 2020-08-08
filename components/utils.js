@@ -34,50 +34,33 @@ const config = {
   errorClass: 'popup__input-error_visible'
 };
 
+
+
 // Попапчик с полной картинкой
 
 const zoomPopup = document.querySelector('.popup_type_full-img');
 const imageZoomPopup= zoomPopup.querySelector('.popup__image');
 const titleZoomPopup = zoomPopup.querySelector('.popup__image-caption');
 
-const openZoomPopup = (card) => {
-  const cardImage = card.querySelector('.place__image');
-  const cardTitle = card.querySelector('.place__title');
+const cardListSelector = '.places';
+const cardSelector = '#place';
 
-  imageZoomPopup.src = cardImage.src;
-  imageZoomPopup.alt = cardImage.alt;
-  titleZoomPopup.textContent = cardTitle.textContent;
+const editNameButton = document.querySelector('.profile__button_type_edit');
+const addCardButton = document.querySelector('.profile__button_type_add');
 
-  openPopup(zoomPopup);
-};
+const forms = document.forms;
 
-// Открытие и закрытие попапов
+const editProfilePopup = document.querySelector('.popup_type_edit-profile');
+const inputName = editProfilePopup.querySelector('.popup__input_field_first');
+const inputPosition = editProfilePopup.querySelector('.popup__input_field_second');
 
-const escListener = (evt) => {
-  if (evt.key === 'Escape') {
-    const openPopup = document.querySelector('.popup_opened');
-    closePopup(openPopup);
-  }
-};
 
-const setEscListener = () => {
-  document.addEventListener('keydown', escListener);
-};
+const addCardPopup = document.querySelector('.popup_type_add-card');
+const inputTitle = addCardPopup.querySelector('.popup__input_field_first');
+const inputLink = addCardPopup.querySelector('.popup__input_field_second');
 
-const removeEscListener = () => {
-  document.removeEventListener('keydown', escListener);
-};
-
-const openPopup = (popup) => {
-  popup.classList.add('popup_opened');
-  setEscListener();
-};
-
-const closePopup = (popup) => {
-  popup.classList.remove('popup_opened');
-  removeEscListener();
-};
-
-export {initialCards, config, openZoomPopup, openPopup, closePopup};
+export { initialCards, config, imageZoomPopup, titleZoomPopup,
+  cardListSelector, cardSelector, editNameButton, addCardButton, forms,
+  inputName, inputPosition, inputTitle, inputLink };
 
 

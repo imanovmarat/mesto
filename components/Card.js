@@ -1,10 +1,9 @@
-import {openZoomPopup} from './utils.js';
-
 export default class Card {
-  constructor(data, cardSelector) {
+  constructor({data, handleCardClick}, cardSelector) {
     this._imgLink = data.link;
     this._imgAltText = data.name;
     this._title = data.name;
+    this._handleCardClick = handleCardClick;
     this._selector = cardSelector;
   }
 
@@ -19,23 +18,21 @@ export default class Card {
 
   _setLikeListener() {
     const likeButton = this._element.querySelector('.place__like');
-    likeButton.addEventListener('click', evt => {
-      evt.target.classList.toggle('place__like_active');
+    likeButton.addEventListener('click', () => {
+      likeButton.classList.toggle('place__like_active');
     })
   }
 
   _setImgListener() {
     const image = this._element.querySelector('.place__image');
-    image.addEventListener('click', evt => {
-      const card = evt.target.closest('.place');
-      openZoomPopup(card);
-    })
+    image.addEventListener('click', this._handleCardClick);
   }
+
 
   _setRemoveBtnListener() {
     const removeButton = this._element.querySelector('.place__remove');
-    removeButton.addEventListener('click', evt => {
-      evt.target.closest('.place').remove();
+    removeButton.addEventListener('click', () => {
+      removeButton.closest('.place').remove();
       this._element = null;
     })
   }

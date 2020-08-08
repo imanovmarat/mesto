@@ -36,7 +36,7 @@
   </footer>
 
   <section class="popup popup_type_edit-profile">
-    <form action="./scripts/index.js" class="popup__container popup__container_size_small" name="editor" novalidate>
+    <form action="components/index.js" class="popup__container popup__container_size_small" name="editor" novalidate>
       <button class="popup__button popup__button_type_close" type="button"></button>
       <fieldset class="popup__box">
         <legend class="popup__heading">Редактировать профиль</legend>
@@ -48,22 +48,22 @@
           <input class="popup__input popup__input_field_second" type="text" id="position-input" name="position-input" minlength="2" maxlength="200" required>
           <span class='popup__input-error' id='position-input-error'></span>
         </label>
-        <button class="popup__button popup__button_type_submit">Сохранить</button>
+        <button class="popup__button popup__button_type_submit" type="submit">Сохранить</button>
       </fieldset>
     </form>
   </section>
 
   <section class="popup popup_type_add-card">
-    <form action="./scripts/index.js" class="popup__container popup__container_size_small" name="add-card" novalidate>
+    <form action="components/index.js" class="popup__container popup__container_size_small" name="add-card" novalidate>
       <button class="popup__button popup__button_type_close" type="button"></button>
       <fieldset class="popup__box">
         <legend class="popup__heading">Новое место</legend>
         <label class="popup__field">
-          <input class="popup__input popup__input_field_first" type="text" id="card-name-input" name="card-name-input" required placeholder="Название" minlength="1" maxlength="30" required>
+          <input class="popup__input popup__input_field_first" type="text" id="card-name-input" name="card-name-input" placeholder="Название" minlength="1" maxlength="30" required>
           <span class='popup__input-error' id='card-name-input-error'></span>
         </label>
         <label class="popup__field">
-          <input class="popup__input popup__input_field_second" type="url" id="card-image-input" name="card-image-input" required placeholder="Ссылка на картинку" required>
+          <input class="popup__input popup__input_field_second" type="url" id="card-image-input" name="card-image-input" placeholder="Ссылка на картинку" required>
           <span class='popup__input-error' id='card-image-input-error'></span>
         </label>
         <button class="popup__button popup__button_type_submit" type="submit">Создать</button>
@@ -81,7 +81,7 @@
 
   <template id="place">
     <figure class="place">
-      <botton class="place__remove"></botton>
+      <button class="place__remove"></button>
       <img class="place__image">
       <figcaption class="place__container">
         <h2 class="place__title"></h2>
@@ -90,9 +90,9 @@
     </figure>
   </template>
 
-  <script type="module" src="./scripts/index.js"></script>
-  <script type="module" src="./scripts/utils.js"></script>
-  <script type="module" src="./scripts/FormValidator.js"></script>
-  <script type="module" src="./scripts/Card.js"></script>
+  <script type="module" src="components/index.js"></script>
+  <script type="module" src="components/utils.js"></script>
+  <script type="module" src="components/FormValidator.js"></script>
+  <script type="module" src="components/Card.js"></script>
 </body>
 </html>
