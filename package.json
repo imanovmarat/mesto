@@ -1,10 +1,11 @@
 {
   "name": "mesto",
   "version": "0.0.1",
-  "description": "## Описание Страница с возможностью редактирования профиля, добавления и удаления карточек с фотографиями и лайками.",
+  "description": "Страница с возможностью редактирования профиля, добавления и удаления карточек с фотографиями и лайками.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rm -rf dist && webpack",
+    "dev": "webpack-dev-server --watch --open"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,24 @@
   "bugs": {
     "url": "https://github.com/imanovmarat/mesto/issues"
   },
-  "homepage": "https://github.com/imanovmarat/mesto#readme"
+  "homepage": "https://github.com/imanovmarat/mesto#readme",
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "autoprefixer": "^9.8.6",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^4.2.1",
+    "cssnano": "^4.1.10",
+    "file-loader": "^6.0.0",
+    "html-loader": "^1.1.0",
+    "html-webpack-plugin": "^4.3.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "postcss-loader": "^3.0.0",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5"
+  }
 }

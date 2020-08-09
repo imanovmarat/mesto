@@ -55,12 +55,8 @@ const inputName = editProfilePopup.querySelector('.popup__input_field_first');
 const inputPosition = editProfilePopup.querySelector('.popup__input_field_second');
 
 
-const addCardPopup = document.querySelector('.popup_type_add-card');
-const inputTitle = addCardPopup.querySelector('.popup__input_field_first');
-const inputLink = addCardPopup.querySelector('.popup__input_field_second');
-
 export { initialCards, config, imageZoomPopup, titleZoomPopup,
   cardListSelector, cardSelector, editNameButton, addCardButton, forms,
-  inputName, inputPosition, inputTitle, inputLink };
+  inputName, inputPosition};
 
 
