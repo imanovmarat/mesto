@@ -3,7 +3,6 @@ export default class FormValidator {
     this._config = config;
     this._formElement = formElement;
     this._inputList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
-    this._setEventListener();
   }
 
   _hasInvalidInput() {
@@ -58,13 +57,14 @@ export default class FormValidator {
       });
     });
   }
+  resetForm() {
+    this._inputList.forEach(inputElement => {
+      this._hideInputError(inputElement);
+    });
+    this._toggleButtonState();
+  }
 
-  enableValidation(boolean) {
-    if (boolean === false){
-      this._inputList.forEach(inputElement => {
-        this._hideInputError(inputElement);
-      });
-      this._toggleButtonState();
-    }
+  enableValidation() {
+    this._setEventListener();
   }
 }

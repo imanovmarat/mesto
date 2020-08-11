@@ -1,15 +1,15 @@
 'use strict';
-import '../pages/index.css';
+import './index.css';
 
 import { initialCards, config,
   cardListSelector, cardSelector, editNameButton, addCardButton, forms,
-  inputName, inputPosition} from './utils.js';
-import Card from './Card.js';
-import FormValidator from './FormValidator.js';
-import Section from "./Section.js";
-import PopupWithImage from "./PopupWithImage.js";
-import PopupWithForm from "./PopupWithForm.js";
-import UserInfo from "./UserInfo.js";
+  inputName, inputPosition} from '../utils/utils.js';
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
+import Section from "../components/Section.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
 
 // Колбэк открытия попапа с увеличенной картинкой
 
@@ -72,15 +72,21 @@ editNameButton.addEventListener('click', () => {
   const currentUserData = userInfo.getUserInfo();
   inputName.value = currentUserData.name;
   inputPosition.value = currentUserData.position;
-  editProfileFormValidator.enableValidation(false);
+  editProfileFormValidator.resetForm();
   personPopup.open();
 });
 
+
 addCardButton.addEventListener('click', () => {
-  addCardFormValidator.enableValidation(false);
+  addCardFormValidator.resetForm();
   addPopup.open();
 });
 
 // Вызов перебора начального массива
 
 cardList.renderItems();
+
+// Вызов валидации форм
+
+editProfileFormValidator.enableValidation();
+addCardFormValidator.enableValidation();
