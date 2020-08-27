@@ -1,0 +1,14 @@
+.profile__avatar {
+  border-radius: inherit;
+  display: block;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 440px) {
+  .profile__avatar {
+    margin-bottom: 14px;
+  }
+
+}

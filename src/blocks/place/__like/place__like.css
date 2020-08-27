@@ -1,8 +1,8 @@
 .place__like {
-  min-width: 29px;
-  height: 29px;
-  padding: 5px 4px;
-  background: url('../../../images/like.svg') center/21px 19px no-repeat;
+  min-width: 20px;
+  height: 20px;
+  padding: 1px 0;
+  background: url('../../../images/like.svg') center/20px 18px no-repeat;
   box-sizing: border-box;
   border: none;
   box-shadow: none;

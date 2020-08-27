@@ -16,12 +16,15 @@
   <main class="content">
 
     <section class="profile">
-      <img src="./images/Jacques-Yves-Cousteau.jpg" alt="Фотография Жак-Ив Кусто" class="profile__image">
+      <a href="#" class="profile__avatar-container">
+        <img src="#" alt="#" class="profile__avatar">
+        <div class="profile__upgrade-avatar-icon"></div>
+      </a>
       <div class="profile__name-container">
-        <h1 class="profile__name">Жак-Ив Кусто</h1>
+        <h1 class="profile__name"></h1>
         <button class="profile__button profile__button_type_edit" type="button"></button>
       </div>
-      <p class="profile__position">Исследователь океана</p>
+      <p class="profile__position"></p>
       <button class="profile__button profile__button_type_add" type="button"></button>
     </section>
 
@@ -78,13 +81,36 @@
     </figure>
   </section>
 
+  <section class="popup popup_type_confirm">
+    <form action="pages/index.js" class="popup__container popup__container_size_small" name="confirm" novalidate>
+      <button class="popup__button popup__button_type_close" type="button"></button>
+        <div class="popup__heading">Вы уверены?</div>
+        <button class="popup__button popup__button_type_submit" type="submit">Да</button>
+    </form>
+  </section>
+
+  <section class="popup popup_type_update-avatar">
+    <form action="pages/index.js" class="popup__container popup__container_size_small" name="update-avatar" novalidate>
+      <button class="popup__button popup__button_type_close" type="button"></button>
+        <div class="popup__heading">Обновить аватар</div>
+        <label class="popup__field">
+          <input class="popup__input popup__input_field_second" type="url" id="update-avatar-input" name="update-avatar-input" placeholder="Ссылка на картинку" required>
+          <span class='popup__input-error' id='update-avatar-input-error'></span>
+        </label>
+        <button class="popup__button popup__button_type_submit" type="submit">Сохранить</button>
+    </form>
+  </section>
+
   <template id="place">
     <figure class="place">
       <button class="place__remove"></button>
-      <img class="place__image">
+      <img src="#" alt="#" class="place__image">
       <figcaption class="place__container">
         <h2 class="place__title"></h2>
-        <button class="place__like" type="button"></button>
+        <div class="place__like-container">
+          <button class="place__like" type="button"></button>
+          <span class="place__like-counter">0</span>
+        </div>
       </figcaption>
     </figure>
   </template>
