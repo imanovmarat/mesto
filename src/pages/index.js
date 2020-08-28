@@ -1,8 +1,8 @@
 'use strict';
 import './index.css';
 
-import { config,
-  cardListSelector, cardSelector, upgradeAvatarButton, editNameButton, addCardButton, forms,
+import { config, imageZoomPopup, titleZoomPopup, cardListSelector,
+  cardSelector, upgradeAvatarButton, editNameButton, addCardButton, forms,
   inputName, inputPosition} from '../utils/utils.js';
 
 import Api from "../components/Api.js";
@@ -59,7 +59,7 @@ api.getAppInfo().then(data => {
       userId: profileData._id,
       data: item,
       handleCardClick: (evt) => {
-        const zoomPopup = new PopupWithImage(evt.target, '.popup_type_full-img');
+        const zoomPopup = new PopupWithImage(imageZoomPopup, titleZoomPopup, evt.target, '.popup_type_full-img');
         zoomPopup.open();
       },
       handleRemoveCard: (cardId) => {
@@ -110,8 +110,11 @@ api.getAppInfo().then(data => {
   const personPopup = new PopupWithForm({
     submitter: (inputValues) => {
       api.editUserInfo(inputValues['name-input'], inputValues['position-input'])
-        .then(() => {
-          userInfo.setUserInfo(inputValues);
+        .then((res) => {
+          userInfo.setUserInfo({
+            'name-input': res.name,
+            'position-input': res.about
+          });
           personPopup.close();
         }).catch(err => console.log(err));
 
