@@ -58,19 +58,17 @@ api.getAppInfo().then(data => {
     const card = new Card({
       userId: profileData._id,
       data: item,
-      handleCardClick: (evt) => {
-        const zoomPopup = new PopupWithImage(imageZoomPopup, titleZoomPopup, evt.target, '.popup_type_full-img');
-        zoomPopup.open();
+      handleCardClick: (cardLink, cardTitle) => {
+        zoomPopup.open(cardLink, cardTitle);
       },
       handleRemoveCard: (cardId) => {
-        const popupWithSubmit = new PopupWithSubmit({
+        popupWithSubmit.open({
           submitter: () => {
-            api.removeCard(cardId).then(data => {
+            api.removeCard(cardId).then(() => {
               card.removeCard();
-            }).catch(err => console.log(err));
+            }).catch(err => console.log(`Ошибка запроса: ${err}`));
           }
-        }, '.popup_type_confirm');
-        popupWithSubmit.open();
+        });
       },
       handleLikeClick: (cardId) => {
         if(card.isLikedByMe()) {
@@ -96,6 +94,10 @@ api.getAppInfo().then(data => {
 
   // Попапы с формами
 
+  const zoomPopup = new PopupWithImage(imageZoomPopup, titleZoomPopup, '.popup_type_full-img');
+
+  const popupWithSubmit = new PopupWithSubmit('.popup_type_confirm');
+
   const upgradeAvatarPopup = new PopupWithForm({
     submitter: (inputValues) => {
       const link = inputValues['update-avatar-input'];
@@ -103,7 +105,9 @@ api.getAppInfo().then(data => {
         .then(data => {
           userInfo.setAvatar(data.avatar);
           upgradeAvatarPopup.close();
-        }).catch(err => console.log(err));
+        })
+        .catch(err => console.log(err))
+        .finally(() => upgradeAvatarPopup.loading());
     }
   }, '.popup_type_update-avatar');
 
@@ -116,7 +120,10 @@ api.getAppInfo().then(data => {
             'position-input': res.about
           });
           personPopup.close();
-        }).catch(err => console.log(err));
+        }).catch(err => console.log(err))
+        .finally(() => {
+          personPopup.loading()
+        });
 
     }
   }, '.popup_type_edit-profile');
@@ -129,7 +136,8 @@ api.getAppInfo().then(data => {
       api.addNewCard(name, link).then(data => {
         generateCard(data);
         addPopup.close();
-      }).catch(err => console.log(err));
+      }).catch(err => console.log(err))
+        .finally(() => addPopup.loading());
 
     }
   }, '.popup_type_add-card');

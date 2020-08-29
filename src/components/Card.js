@@ -49,12 +49,14 @@ export default class Card {
 
   _setImgListener() {
     this._image = this._element.querySelector('.place__image');
-    this._image.addEventListener('click', this._handleCardClick);
+    this._image.addEventListener('click', () => {
+      this._handleCardClick(this._imgLink, this._title)
+    });
   }
 
   _setRemoveBtnListener() {
     this._removeButton = this._element.querySelector('.place__remove');
-    this._removeButton.addEventListener('click', (event) => {
+    this._removeButton.addEventListener('click', () => {
       this._handleRemoveCard(this._cardId);
     })
   }
@@ -67,8 +69,9 @@ export default class Card {
 
   createCard() {
     this._getElement();
-    this._cardimage = this._element.querySelector('.place__image');
-    this._cardtitle = this._element.querySelector('.place__title');
+    const cardImage = this._element.querySelector('.place__image');
+    const cardTitle = this._element.querySelector('.place__title');
+
     if (this.isLikedByMe()) {
       this._likeButton = this._element.querySelector('.place__like');
       this._likeButton.classList.toggle('place__like_active');
@@ -82,11 +85,9 @@ export default class Card {
     } else {
       this._element.querySelector('.place__remove').remove();
     }
-    this._cardimage.src = this._imgLink;
-    this._cardimage.alt = this._imgAltText;
-    this._cardtitle.textContent = this._title;
+    cardImage.src = this._imgLink;
+    cardImage.alt = this._imgAltText;
+    cardTitle.textContent = this._title;
     return this._element;
-
-
   }
 }
